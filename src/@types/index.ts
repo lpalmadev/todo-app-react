@@ -1,3 +1,4 @@
-export * from './Auth';
-// export * from './Todo';
-export * from './User';
+export * from './Auth.d';
+export * from './Routes.d';
+export * from './Todo.d';
+export * from './User.d';

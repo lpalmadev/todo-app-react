@@ -1,7 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// import { persistLocalStorage } from "../utilities";
-// import { User } from "../@types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAUO07U3bCgGxMpqyd0Ji22zsOD8PDlBvI",

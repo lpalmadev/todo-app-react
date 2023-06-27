@@ -1,3 +1,4 @@
+import { Auth } from "firebase/auth"
 import { User } from "."
 
 export interface LoginForm {
@@ -7,7 +8,7 @@ export interface LoginForm {
 
 export interface RegisterForm {
     email: string,
-    password:string
+    password: string
 }
 
 export interface AuthProviderProps {
@@ -15,9 +16,11 @@ export interface AuthProviderProps {
 }
 
 export interface AuthContextValue {
-    signup: (email : string, password: string) => Promise<UserCredential>,
-    login: (email : string, password: string) => Promise<UserCredential>,
-    logout: () => void,
-    signinWithGoogle: () => Promise<UserCredential> ,
-    user: User | nulls
+    auth: Auth,
+    signup: (email: string, password: string) => Promise<UserCredential>,
+    login: (email: string, password: string) => Promise<UserCredential>,
+    logout: () => Promise<void>,
+    signinWithGoogle: () => Promise<UserCredential>,
+    user: User | null,
+    isLoading: boolean
 }
