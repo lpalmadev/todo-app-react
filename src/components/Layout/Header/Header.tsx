@@ -1,6 +1,6 @@
 import { PublicRoutes } from "../../../@types";
-import { useAuth } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../hooks";
 import "./Header.css";
 
 function Header() {
@@ -21,9 +21,10 @@ function Header() {
         <img
           src={user?.photoURL !== null ? user?.photoURL : ""}
           alt="profileURL"
+          referrerPolicy="no-referrer"
         />
       </div>
-      <button onClick={logout}>Logout</button>
+      <button onClick={handleLogout}>Logout</button>
     </header>
   );
 }

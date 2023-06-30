@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "../configurations";
 import {
   GoogleAuthProvider,
@@ -13,14 +13,7 @@ import { AuthContextValue, AuthProviderProps, User } from "../@types";
 
 export const AuthContext = createContext<AuthContextValue | null>(null);
 
-export const useAuth = (): AuthContextValue => {
-  const context = useContext(AuthContext);
-  console.log(context);
-  if (!context) throw new Error("Theres is not auth provider");
-  return context;
-};
-
-function AuthProvider({ children }: AuthProviderProps) {
+const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,7 +34,6 @@ function AuthProvider({ children }: AuthProviderProps) {
     return signOut(auth);
   };
 
-  //Se usa para actualizar el usuario cuando hay cambio de estado
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
@@ -50,13 +42,21 @@ function AuthProvider({ children }: AuthProviderProps) {
     return () => unsubscribe();
   }, []);
 
+  const value = {
+    signup,
+    login,
+    signinWithGoogle,
+    logout,
+    user,
+    isLoading,
+    auth,
+  };
+
   return (
-    <AuthContext.Provider
-      value={{ signup, login, signinWithGoogle, logout, user, isLoading, auth }}
-    >
+    <AuthContext.Provider value={value}>
       {!isLoading && children}
     </AuthContext.Provider>
   );
-}
+};
 
 export default AuthProvider;

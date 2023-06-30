@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { LoginForm, PrivateRoutes } from "../../@types";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks";
 
 const initialFormState: LoginForm = { email: "", password: "" };
 
-function Login() {
+const Login = () => {
   const [form, setForm] = useState<LoginForm>(initialFormState);
   const { login, signinWithGoogle } = useAuth();
   const navigate = useNavigate();
@@ -92,6 +92,6 @@ function Login() {
       </p>
     </div>
   );
-}
+};
 
 export default Login;

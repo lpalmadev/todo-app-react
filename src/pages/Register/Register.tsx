@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { PrivateRoutes, RegisterForm } from "../../@types";
+import { useAuth } from "../../hooks";
 
 const initialState: RegisterForm = { email: "", password: "" };
 

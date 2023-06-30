@@ -1,26 +1,14 @@
-import { Layout } from "../../../components/Layout";
+import TodoDataProvider from "../../../contexts/TodoDataContext";
+import TodoForm from "./components/TodoForm/TodoForm";
+import { TodoItemList } from "./components/TodoItemList";
 
-function Todo() {
+const Todo = () => {
   return (
-    <Layout>
-      <div id="task">
-        <div id="task-form">
-          <input type="text" placeholder="Add Task" />
-          <input type="checkbox" />
-          <button type="submit">Save</button>
-        </div>
-        <div id="task-list">
-          <div id="task-item">
-            <span>Titulo</span>
-            <div id="task-item-actions">
-              <button>Edit</button>
-              <button>Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Layout>
+    <TodoDataProvider>
+      <TodoForm />
+      <TodoItemList />
+    </TodoDataProvider>
   );
-}
+};
 
 export default Todo;

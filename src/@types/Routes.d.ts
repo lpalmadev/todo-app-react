@@ -5,5 +5,6 @@ export const PublicRoutes = {
 
 export const PrivateRoutes = {
     PRIVATE: 'admin',
-    HOME: 'home'
+    HOME: 'home',
+    ABOUT: 'about'
 };

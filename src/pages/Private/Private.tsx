@@ -1,15 +1,18 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { PrivateRoutes } from "../../@types";
-import { lazy } from "react";
+import { Layout } from "../../components";
+import { About } from "./About";
+import { Todo } from "./Todo";
 
-const Todo = lazy(() => import("./Todo/Todo"));
-
-function Private() {
+const Private = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to={PrivateRoutes.HOME} />} />
-      <Route path={PrivateRoutes.HOME} element={<Todo />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Navigate to={PrivateRoutes.HOME} />} />
+        <Route path={PrivateRoutes.HOME} element={<Todo />} />
+        <Route path={PrivateRoutes.ABOUT} element={<About />} />
+      </Routes>
+    </Layout>
   );
-}
+};
 export default Private;
