@@ -1,8 +1,14 @@
-import { Header } from "../../../components/Layout/Header"
+import TodoDataProvider from "../../../contexts/TodoDataContext";
+import TodoForm from "./components/TodoForm/TodoForm";
+import { TodoItemList } from "./components/TodoItemList";
 
-function Todo() {
+const Todo = () => {
   return (
-    <div><Header /></div>
-  )
-}
-export default Todo
+    <TodoDataProvider>
+      <TodoForm />
+      <TodoItemList />
+    </TodoDataProvider>
+  );
+};
+
+export default Todo;

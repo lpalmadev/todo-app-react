@@ -1,18 +1,16 @@
-import { Header } from "./Header"
+import { Header } from "./Header";
 
- 
-interface Props 
-{
-  children: JSX.Element
+interface Props {
+  children: JSX.Element;
 }
 
 function Layout({ children }: Props) {
   return (
     <div>
-      <Header/>
+      <Header />
       {children}
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
