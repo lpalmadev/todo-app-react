@@ -6,23 +6,30 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Private } from "./pages/Private";
 import "./App.css";
+import { Layout } from "./components";
 
 function App() {
   return (
-    <div className="bg-slate-300 h-screen flex text-white">
+    //className="bg-slate-300 h-screen flex text-white"
+    <div className="bg-zinc-50 flex flex-col h-screen text-white ">
       <AuthProvider>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Navigate to={PrivateRoutes.PRIVATE} />} />
-            <Route path={PublicRoutes.LOGIN} element={<Login />} />
-            <Route path={PublicRoutes.REGISTER} element={<Register />} />
-            <Route element={<AuthGuard privateValidation={true} />}>
+          <Layout>
+            <Routes>
               <Route
-                path={`${PrivateRoutes.PRIVATE}/*`}
-                element={<Private />}
+                path="/"
+                element={<Navigate to={PrivateRoutes.PRIVATE} />}
               />
-            </Route>
-          </Routes>
+              <Route path={PublicRoutes.LOGIN} element={<Login />} />
+              <Route path={PublicRoutes.REGISTER} element={<Register />} />
+              <Route element={<AuthGuard privateValidation={true} />}>
+                <Route
+                  path={`${PrivateRoutes.PRIVATE}/*`}
+                  element={<Private />}
+                />
+              </Route>
+            </Routes>
+          </Layout>
         </BrowserRouter>
       </AuthProvider>
     </div>

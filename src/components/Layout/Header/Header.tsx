@@ -1,9 +1,9 @@
 import { PublicRoutes } from "../../../@types";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks";
-import "./Header.css";
+import UserInfo from "./components/UserInfo/UserInfo";
 
-function Header() {
+const Header = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -13,20 +13,18 @@ function Header() {
   };
 
   return (
-    <header>
-      <h2>To-do List</h2>
-      <div>
-        <span>{user?.displayName}</span>
-        <span>{user?.email}</span>
-        <img
-          src={user?.photoURL !== null ? user?.photoURL : ""}
-          alt="profileURL"
-          referrerPolicy="no-referrer"
+    <header className="bg-black w-full mb-0  top-0 h-16 justify-center">
+      <h2>My Todo App</h2>
+      {user && (
+        <UserInfo
+          displayName={user?.displayName}
+          email={user?.email}
+          photoURL={user?.photoURL}
         />
-      </div>
-      <button onClick={handleLogout}>Logout</button>
+      )}
+      {user && <button onClick={handleLogout}>Logout</button>}
     </header>
   );
-}
+};
 
 export default Header;
