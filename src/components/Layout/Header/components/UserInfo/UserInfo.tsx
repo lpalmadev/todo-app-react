@@ -1,9 +1,9 @@
 import { Avatar } from "../../../../commons/Avatar";
 
 interface UserInfoProps {
-  displayName: string;
-  email: string;
-  photoURL: string;
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
 }
 
 const UserInfo = ({ displayName, email, photoURL }: UserInfoProps) => {
@@ -13,7 +13,7 @@ const UserInfo = ({ displayName, email, photoURL }: UserInfoProps) => {
         <span>{displayName}</span>
         <span>{email}</span>
       </div>
-      {<Avatar url={photoURL} alt={`${displayName} profile photo`} />}
+      {<Avatar url={photoURL ?? "#"} alt={`${displayName} profile photo`} />}
     </div>
   );
 };
