@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-black w-full mb-0  top-0 h-16 justify-center">
+    <header className="bg-black w-full mb-0 top-0 h-16 flex justify-center text-gray-500">
       <h2>My Todo App</h2>
       {user && (
         <UserInfo

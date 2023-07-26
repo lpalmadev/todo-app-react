@@ -11,7 +11,7 @@ import { Layout } from "./components";
 function App() {
   return (
     //className="bg-slate-300 h-screen flex text-white"
-    <div className="bg-zinc-50 flex flex-col h-screen text-white ">
+    <div className="bg-zinc-50 flex flex-col h-screen">
       <AuthProvider>
         <BrowserRouter>
           <Layout>
