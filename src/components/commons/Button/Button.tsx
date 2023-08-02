@@ -1,9 +1,5 @@
-import "./Button.css"
+const Button = () => {
+  return <button>Button</button>;
+};
 
-function Button() {
-  return (
-    <button ></button>
-  )
-}
-
-export default Button
+export default Button;
