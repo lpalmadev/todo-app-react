@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header className="bg-[#181827] w-full mb-0 top-0 h-16 flex items-center justify-center text-gray-500">
-      <h5 className="text-[#04b1b8] text-base">My Todo App</h5>
+      <h5 className="text-white text-2xl">Todo List</h5>
       {user && (
         <UserInfo
           displayName={user?.displayName}

@@ -4,8 +4,7 @@ import { AuthGuard } from "./guards";
 import { PrivateRoutes, PublicRoutes } from "./@types";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { Private } from "./pages/Private";
-import "./App.css";
+import { Private } from "./pages/Private"; 
 import { Layout } from "./components";
 
 function App() {

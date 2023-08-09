@@ -2,8 +2,9 @@ import { useMemo, useState } from "react";
 import { LoginForm, PrivateRoutes } from "../../@types";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks";
-import { InputField } from "../../components";
+import { Button, InputField } from "../../components";
 import { emailValidator, passwordValidator } from "../../utilities";
+import google from "../../assets/google.svg";
 
 const initialFormState: LoginForm = { email: "", password: "" };
 
@@ -80,17 +81,12 @@ const Login = () => {
             placeholder="**********"
           />
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Login
-        </button>
+        <Button title="Log in" isPrimary />
       </form>
       <hr className="mt-4 mb-4 border" />
-      <button
-        className="bg-slate-50 hover:bg-slate-200 text-black  shadow rounded border-2 border-gray-300 py-2 px-4 w-full"
-        onClick={onClickLoginWithGoogle}
-      >
-        Log in with Google
-      </button>
+      <Button title="Log in with Google" onClick={onClickLoginWithGoogle}>
+        <img src={google} className="w-5 h-5 absolute left-[26px]" />
+      </Button>
       <p className="my-4 text-sm flex justify-between text-gray-600  ">
         Don't have an account?
         <Link to="/register" className="text-blue-700 hover:text-blue-900">
