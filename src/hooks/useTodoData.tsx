@@ -10,6 +10,7 @@ import {
   doc,
   deleteDoc,
   onSnapshot,
+  DocumentData,
 } from "firebase/firestore";
 import { useAuth } from ".";
 
@@ -37,7 +38,7 @@ const useTodoData = () => {
     }
   }, [user]);
 
-  const createTodoItem = async (item: TodoItemModel): Promise<any> => {
+  const createTodoItem = async (item: TodoItemModel): Promise<DocumentData> => {
     return await addDoc(collection(db, TODO_COLLECTION), item);
   };
 

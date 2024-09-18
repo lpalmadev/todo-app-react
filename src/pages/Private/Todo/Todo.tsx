@@ -1,6 +1,5 @@
 import TodoDataProvider from "../../../contexts/TodoDataContext";
-import TodoForm from "./components/TodoForm/TodoForm";
-import { TodoItemList } from "./components/TodoItemList";
+import { TodoForm, TodoItemList } from "./components";
 
 const Todo = () => {
   return (

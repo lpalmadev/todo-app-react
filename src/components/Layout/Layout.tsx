@@ -9,7 +9,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <main className="pt-8 pb-8">{children}</main>
+      <main className="pt-8 pb-8 ml-auto mr-auto">{children}</main>
       <Footer />
     </>
   );

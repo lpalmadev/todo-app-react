@@ -6,3 +6,4 @@ Realizar proyecto de lista ToDo para practicar lo aprendido de react el proyecto
 - El proyecto deberá contemplar el uso de pull request
 - El proyecto deberá implementar CI/CD con GitHub a un sistema gratuito de alojamiento.
 - El proyecto se generará en ViteJs
+- Incluir plantillas de shadcdn

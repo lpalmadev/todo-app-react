@@ -1,68 +1,81 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PrivateRoutes, RegisterForm } from "../../@types";
 import { useAuth } from "../../hooks";
+import { Button, InputField } from "../../components";
+import { emailValidator, passwordValidator } from "../../utilities";
 
-const initialState: RegisterForm = { email: "", password: "" };
+const initialFormState: RegisterForm = { email: "", password: "" };
 
 function Register() {
-  const [register, setRegister] = useState<RegisterForm>(initialState);
+  const [form, setForm] = useState<RegisterForm>(initialFormState);
+  const [errors, setErrors] = useState<RegisterForm>(initialFormState);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    setRegister({ ...register, [name]: value });
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    await signup(register.email, register.password);
-    navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
+    setIsSubmitted(true);
+    if (validateForm) {
+      await signup(form.email, form.password);
+      navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
+    }
   };
 
+  const validateForm = useMemo(() => {
+    const errors: RegisterForm = {
+      email: "",
+      password: "",
+    };
+
+    if (isSubmitted) {
+      console.log(isSubmitted);
+      errors.email = emailValidator(form.email);
+      errors.password = passwordValidator(form.password);
+    }
+
+    setErrors(errors);
+
+    // Return true if there are no errors, otherwise false
+    return Object.values(errors).every((error) => !error);
+  }, [form, isSubmitted]);
+
   return (
-    <div className="w-full max-w-xs m-auto">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-      >
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Email
-          </label>
-          <input
+    <div className="bg-white border-neutral-200 border-solid border max-w-[414px] m-auto pl-10 pr-10">
+      <h3 className="text-center leading-10 text-3xl font-semibold mt-4 mb-4">
+        Register
+      </h3>
+      <form onSubmit={handleSubmit} noValidate>
+        <div className="mb-6">
+          <InputField
+            label="Email"
             name="email"
             type="email"
-            id="email"
+            value={form.email}
             onChange={handleChange}
+            error={errors.email}
             placeholder="example@domain.com"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div className="mb-4">
-          <label
-            htmlFor="password"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Password
-          </label>
-          <input
+        <div className="mb-6">
+          <InputField
+            label="Password"
             name="password"
             type="password"
-            id="password"
+            value={form.password}
             onChange={handleChange}
+            error={errors.password}
             placeholder="**********"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Register
-        </button>
+        <Button title="Register" isPrimary />
       </form>
       <p className="my-4 text-sm flex justify-between px-3">
         Already have an Account?
