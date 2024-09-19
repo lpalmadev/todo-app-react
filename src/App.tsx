@@ -10,7 +10,7 @@ import { ThemeProvider } from "./providers/theme-providers";
 
 function App() {
   return (
-    <div className="bg-zinc-50 flex flex-col h-screen">
+    <div className=" flex flex-col h-screen">
       <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
         <AuthProvider>
           <BrowserRouter>
