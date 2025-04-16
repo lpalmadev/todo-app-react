@@ -100,60 +100,6 @@ const Login = () => {
         </div>
       </CardFooter>
     </Card>
-
-    // <div className=" bg-white border-neutral-200 border-solid border max-w-[414px] m-auto pl-10 pr-10">
-    //   <h3 className="text-center leading-10 text-3xl font-semibold mt-4 mb-4">
-    //     Log in
-    //   </h3>
-    //   <form onSubmit={handleSubmit} noValidate>
-    //     <div className="mb-6">
-    //       <Input
-    //         name="email"
-    //         placeholder="example@domain.com"
-    //         value={form.email}
-    //         type="email"
-    //         onChange={handleChange}
-    //         hasError={true}
-    //       />
-    //       {/* <InputField
-    //         label="Email"
-    //         name="email"
-    //         type="email"
-    //         value={form.email}
-    //         onChange={handleChange}
-    //         error={errors.email}
-    //         placeholder="example@domain.com"
-    //       /> */}
-    //     </div>
-    //     <div className="mb-6">
-    //       <InputField
-    //         label="Password"
-    //         name="password"
-    //         type="password"
-    //         value={form.password}
-    //         onChange={handleChange}
-    //         error={errors.password}
-    //         placeholder="**********"
-    //       />
-    //     </div>
-    //     <Button className="w-full">Log in</Button>
-    //   </form>
-    //   <hr className="mt-4 mb-4 border" />
-    //   <Button
-    //     variant="outline"
-    //     className="w-full gap-2"
-    //     onClick={onClickLoginWithGoogle}
-    //   >
-    //     <Google />
-    //     Login with Google
-    //   </Button>
-    //   <p className="my-4 text-sm flex justify-between text-gray-600  ">
-    //     Don't have an account?
-    //     <Link to="/register" className="text-blue-700 hover:text-blue-900">
-    //       Register
-    //     </Link>
-    //   </p>
-    // </div>
   );
 };
 
